@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:payflow/shared/auth/auth_controller.dart';
 import 'package:payflow/shared/themes/app_colors.dart';
@@ -11,7 +13,12 @@ class SplashPage extends StatelessWidget
   Widget build(BuildContext context)
   {
     final authController = AuthController();
-    authController.currentUser(context);
+    Timer(
+      Duration(seconds: 2),
+      () {
+        authController.currentUser(context);
+      }
+    );
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Stack(
