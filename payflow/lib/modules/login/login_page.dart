@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+
+import 'package:payflow/modules/login/login_controller.dart';
 import 'package:payflow/shared/app_strings.pt_BR.dart';
 import 'package:payflow/shared/themes/app_colors.dart';
 import 'package:payflow/shared/themes/app_images.dart';
 import 'package:payflow/shared/themes/app_text_styles.dart';
-import 'package:payflow/shared/themes/widgets/social_login/social_login_button.dart';
+import 'package:payflow/shared/widgets/social_login/social_login_button.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget
+{
   const LoginPage({ Key? key }) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+{
+  final loginController = LoginController();
+
   @override
-  Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+  Widget build(BuildContext context)
+  {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Container(
@@ -67,9 +74,11 @@ class _LoginPageState extends State<LoginPage> {
                       left: 40,
                       right: 40,
                     ),
-                    child: SocialLoginButton(onTap: () {
-                      print("clicou");
-                    },),
+                    child: SocialLoginButton(
+                      onTap: () {
+                        loginController.googleSingIn(context);
+                      },
+                    ),
                   )
                 ],
               ),
