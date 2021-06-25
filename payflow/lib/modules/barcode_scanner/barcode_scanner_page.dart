@@ -25,10 +25,11 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage>
   void initState()
   {
     barcodeScannerController.getAvailableCameras();
-    barcodeScannerController.statusNotifier.addListener(() {
+    barcodeScannerController.statusNotifier.addListener(()
+    {
       if (barcodeScannerController.status.hasBarcode)
       {
-        Navigator.pushReplacementNamed(context, "/insert_boleto");
+        Navigator.pushReplacementNamed(context, "/home");
       }
     });
     super.initState();
@@ -54,7 +55,8 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage>
               if (status.showCamera)
               {
                 return Container(
-                  child: status.cameraController!.buildPreview(),
+                  color: Colors.blue,
+                  child: barcodeScannerController.cameraController!.buildPreview(),
                 );
               }
               return Container();
@@ -97,9 +99,11 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage>
               ),
               bottomNavigationBar: SetLabelButtons(
                 primaryLabel: AppStrings.barcodeScannerInsertCode,
-                primaryOnPressed: () {},
+                primaryOnPressed: () {
+                  Navigator.pushReplacementNamed(context, "/insert_boleto");
+                },
                 secondaryLabel: AppStrings.barcodeScannerAddFromGallery,
-                secondaryOnPressed: () {},
+                secondaryOnPressed: barcodeScannerController.scanWithImagePicker,
               ),
             ),
           ),
@@ -113,11 +117,11 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage>
                   title: AppStrings.barcodeScannerErrorReadingCode,
                   subtitle: AppStrings.barcodeScannerErrorTryAgainMsg,
                   primaryLabel: AppStrings.barcodeScannerTryAgain,
-                  primaryOnPressed: () {
-                    barcodeScannerController.getAvailableCameras();
-                  },
+                  primaryOnPressed: barcodeScannerController.scanWithCamera,
                   secondaryLabel: AppStrings.barcodeScannerTypeCode,
-                  secondaryOnPressed: () {},
+                  secondaryOnPressed: () {
+                    Navigator.pushReplacementNamed(context, "/insert_boleto");
+                  },
                 );
               }
               return Container();
