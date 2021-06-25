@@ -17,8 +17,7 @@ class _HomePageState extends State<HomePage>
 {
   final homeController = HomeController();
   final pages = [
-    Container(color: Colors.red),
-    Container(color: Colors.green),
+    Container(color: Colors.yellow),
     Container(color: Colors.blue),
   ];
 
@@ -41,7 +40,7 @@ class _HomePageState extends State<HomePage>
             child: ListTile(
               title: Text.rich(
                 TextSpan(
-                  text: AppStrings.appBarUserNameTitle,
+                  text: AppStrings.homePageAppBarUserNameTitle,
                   style: AppTextStyles.titleRegular,
                   children: [
                     TextSpan(
@@ -52,7 +51,7 @@ class _HomePageState extends State<HomePage>
                 )
               ),
               subtitle: Text(
-                AppStrings.appBarSubtitle,
+                AppStrings.homePageAppBarSubtitle,
                 style: AppTextStyles.captionShape,
               ),
               trailing: Container(
@@ -84,7 +83,7 @@ class _HomePageState extends State<HomePage>
             ),
             GestureDetector(
               onTap: () {
-                setPage(1);
+                Navigator.pushNamed(context, "/barcode_scanner");
               },
               child: Container(
                 width: 56,
@@ -105,7 +104,7 @@ class _HomePageState extends State<HomePage>
                 color: AppColors.body,
               ),
               onPressed: () {
-                setPage(2);
+                setPage(1);
               },
             ),
           ],
