@@ -12,4 +12,5 @@ class AppStrings
   static const String barcodeScannerErrorTryAgainMsg = "Tente escanear novamente ou digite o código do seu boleto.";
   static const String barcodeScannerTryAgain = "Escanear novamente";
   static const String barcodeScannerTypeCode = "Digitar código";
+  static const String insertBoletoTypeData = "Preencha os dados do boleto";
 }

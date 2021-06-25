@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'modules/barcode_scanner/barcode_scanner_page.dart';
 import 'modules/login/login_page.dart';
-import 'modules/insert_boleto/insert_boleto.dart';
+import 'modules/insert_boleto/insert_boleto_page.dart';
 import 'modules/splash/splash_page.dart';
 import 'modules/home/home_page.dart';
 import 'shared/themes/app_colors.dart';
