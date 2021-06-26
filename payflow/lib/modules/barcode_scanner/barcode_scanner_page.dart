@@ -29,7 +29,11 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage>
     {
       if (barcodeScannerController.status.hasBarcode)
       {
-        Navigator.pushReplacementNamed(context, "/home");
+        Navigator.pushNamed(
+          context,
+          "/insert_boleto",
+          arguments: barcodeScannerController.status.barcode
+        );
       }
     });
     super.initState();
@@ -100,7 +104,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage>
               bottomNavigationBar: SetLabelButtons(
                 primaryLabel: AppStrings.barcodeScannerInsertCode,
                 primaryOnPressed: () {
-                  Navigator.pushReplacementNamed(context, "/insert_boleto");
+                  Navigator.pushNamed(context, "/insert_boleto");
                 },
                 secondaryLabel: AppStrings.barcodeScannerAddFromGallery,
                 secondaryOnPressed: barcodeScannerController.scanWithImagePicker,
@@ -120,7 +124,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage>
                   primaryOnPressed: barcodeScannerController.scanWithCamera,
                   secondaryLabel: AppStrings.barcodeScannerTypeCode,
                   secondaryOnPressed: () {
-                    Navigator.pushReplacementNamed(context, "/insert_boleto");
+                    Navigator.pushNamed(context, "/insert_boleto");
                   },
                 );
               }

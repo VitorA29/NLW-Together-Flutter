@@ -15,7 +15,7 @@ class AuthController
     {
       _user = user;
       saveUser(user);
-      Navigator.pushReplacementNamed(context, "/home");
+      Navigator.pushReplacementNamed(context, "/home", arguments: user);
       return;
     }
     Navigator.pushReplacementNamed(context, "/login");
